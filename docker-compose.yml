@@ -28,4 +28,8 @@ services:
       start_period: 5s
     volumes:
       - ./create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
-    
+      - db_api:/var/lib/postgresql/data
+
+volumes:
+  db_api:
+    driver: local
