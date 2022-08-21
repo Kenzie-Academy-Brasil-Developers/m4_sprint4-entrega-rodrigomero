@@ -1,7 +1,7 @@
-import createProductService from "../../services/products/createProduct.service";
+import createProductService from "../../services/products/createProduct.service.js";
 
 const createProductController = async (request, response) => {
-  const { name, price, categoryId } = request.body;
+  const { name, price, category_id:categoryId } = request.body;
 
   try {
     const user = await createProductService(name, price, categoryId);

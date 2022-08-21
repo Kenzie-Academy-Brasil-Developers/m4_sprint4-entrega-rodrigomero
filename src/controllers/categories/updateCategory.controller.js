@@ -1,4 +1,4 @@
-import updateCategoryService from "../../services/categories/updateCategory.service";
+import updateCategoryService from "../../services/categories/updateCategory.service.js";
 
 
 const updateCategoryController = async (request, response) => {
@@ -6,7 +6,7 @@ const updateCategoryController = async (request, response) => {
   const { name } = request.body;
 
   try {
-    const res = updateCategoryService(id, name);
+    const res = await updateCategoryService(id, name);
 
     return response.status(200).json(res);
   } catch (err) {

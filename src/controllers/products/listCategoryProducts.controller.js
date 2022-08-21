@@ -1,4 +1,4 @@
-import listCategoryProductsService from "../../services/products/listCategoryProducts.service";
+import listCategoryProductsService from "../../services/products/listCategoryProducts.service.js";
 
 const listCategoryProductsController = async (request, response) => {
   const { category_id: categoryId } = request.params;

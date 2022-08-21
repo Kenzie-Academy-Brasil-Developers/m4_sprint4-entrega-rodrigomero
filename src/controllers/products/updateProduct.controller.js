@@ -1,4 +1,4 @@
-import updateProductService from "../../services/products/updateProduct.service";
+import updateProductService from "../../services/products/updateProduct.service.js";
 
 const updateProductController = async (request, response) => {
   const { id } = request.params;

@@ -1,4 +1,4 @@
-import database from "../../database";
+import database from "../../database/index.js";
 
 const listProductsService = async () => {
   try {

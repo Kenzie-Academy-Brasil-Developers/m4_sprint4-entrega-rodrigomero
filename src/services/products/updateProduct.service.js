@@ -1,9 +1,9 @@
-import database from "../../database";
+import database from "../../database/index.js";
 
 const updateProductService = async (id, name, price, categoryId) => {
   try {
     const res = await database.query(
-      "UPDATE products SET name = $1, price = $2, category_id = $3 WHERE id = $4",
+      "UPDATE products SET name = $1, price = $2, category_id = $3 WHERE id = $4 RETURNING *",
       [name, price, categoryId, id]
     );
 

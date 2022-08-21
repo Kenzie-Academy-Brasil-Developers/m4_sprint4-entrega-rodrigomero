@@ -1,4 +1,4 @@
-import listProductsService from "../../services/products/listProducts.service";
+import listProductsService from "../../services/products/listProducts.service.js";
 
 const listProductsController = async (request, response) => {
   try {
