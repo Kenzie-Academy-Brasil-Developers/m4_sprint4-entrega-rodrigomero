@@ -12,7 +12,7 @@ const updateCategoryService = async (id, name) => {
       throw "Category not found";
     }
 
-    return { message: "Category updated", product: res.rows[0] };
+    return { message: "Category Aualizada", category: res.rows[0] };
   } catch (err) {
     throw new Error(err);
   }

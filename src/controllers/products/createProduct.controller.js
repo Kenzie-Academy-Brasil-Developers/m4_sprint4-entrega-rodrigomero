@@ -4,11 +4,14 @@ const createProductController = async (request, response) => {
   const { name, price, category_id:categoryId } = request.body;
 
   try {
-    const user = await createProductService(name, price, categoryId);
-
-    return response.status(201).json(user);
+    const product = await createProductService(name, price, categoryId);
+    const resposta = {
+      product,
+      message: "Category created"
+    }
+    return response.status(201).json(resposta);
   } catch (err) {
-    return response.status(400).json(err.message);
+    return response.status(400).json({message: err.message});
   }
 };
 

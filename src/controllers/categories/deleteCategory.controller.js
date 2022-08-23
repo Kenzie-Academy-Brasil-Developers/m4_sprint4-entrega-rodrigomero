@@ -8,7 +8,7 @@ const deleteCategoryController = async (request, response) => {
 
     return response.status(204).json(deletedUser);
   } catch (err) {
-    return response.status(400).json(err.message);
+    return response.status(400).json({message: err.message});
   }
 };
 

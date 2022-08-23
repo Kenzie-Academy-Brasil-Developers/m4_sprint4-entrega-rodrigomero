@@ -7,10 +7,10 @@ const updateCategoryController = async (request, response) => {
 
   try {
     const res = await updateCategoryService(id, name);
-
+    console.log(res)
     return response.status(200).json(res);
   } catch (err) {
-    return response.status(400).json(err.message);
+    return response.status(400).json({message: err.message});
   }
 };
 

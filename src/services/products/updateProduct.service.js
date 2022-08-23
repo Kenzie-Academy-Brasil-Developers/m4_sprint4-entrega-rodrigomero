@@ -1,11 +1,24 @@
 import database from "../../database/index.js";
 
-const updateProductService = async (id, name, price, categoryId) => {
+const updateProductService = async (id, userData) => {
   try {
-    const res = await database.query(
-      "UPDATE products SET name = $1, price = $2, category_id = $3 WHERE id = $4 RETURNING *",
-      [name, price, categoryId, id]
-    );
+    if (userData.id) {
+      delete userData["id"];
+    }
+    
+    let query = "UPDATE products SET ";
+    const keys = Object.keys(userData);
+    const values = Object.values(userData);
+
+    keys.forEach((key, index) => {
+      query += `${key} = \$${(index += 1)}, `;
+    });
+
+    query = query.slice(0, -2);
+
+    query += ` WHERE id = \$${(keys.length += 1)} RETURNING *`;
+
+    const res = await database.query(query, [...values, id]);
 
     if (res.rows.length === 0) {
       throw "Product not found";
